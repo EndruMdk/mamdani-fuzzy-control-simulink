@@ -1,0 +1,45 @@
+[System]
+Name='fis'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-2 2]
+NumMFs=3
+MF1='neg':'trapmf',[-2 -2 -2 0]
+MF2='nula':'trimf',[-1 0 1]
+MF3='poz':'trapmf',[0 2 2 2]
+
+[Input2]
+Name='ed'
+Range=[-0.05 0.05]
+NumMFs=3
+MF1='neg':'trimf',[-0.0917 -0.05 0.00408031088082902]
+MF2='mf2':'trimf',[-0.04167 0 0.04167]
+MF3='poz':'trimf',[-0.00433937823834197 0.05 0.0917]
+
+[Output1]
+Name='upr'
+Range=[-0.5 0.5]
+NumMFs=5
+MF1='malo':'trimf',[-3 -0.5 0]
+MF2='srednje':'trimf',[-0.1 0 0.1]
+MF3='veliko':'trapmf',[0 0.35 0.5 2.5]
+MF4='srednjeMalo':'trimf',[-0.25 -0.125 0]
+MF5='srednjeVeliko':'trimf',[0 0.125 0.25]
+
+[Rules]
+1 0, 1 (1) : 1
+2 0, 2 (1) : 1
+3 0, 3 (1) : 1
+2 1, 4 (1) : 1
+2 3, 5 (1) : 1
